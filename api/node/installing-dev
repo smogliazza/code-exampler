@@ -1,0 +1,9 @@
+npm init
+npm i --save express //http managment
+npm i --save body-parser //form post parser (to json)
+npm i --save mongoose //better mongo managment
+npm i --save connect-multiparty //file managment
+npm i --save validator //validator
+npm i --save validatorjs //better validator
+npm i -D --save-dev jest //testing ***APRENDER A USAR
+npm i --save-dev nodemon //for dev, auto-refreshing
