@@ -59,7 +59,10 @@ var controller = {
          
         //Validate
         let validation = new Validator(params, {
-            example: 'required',
+            title: 'required',
+            description: 'required',
+            image: 'required',
+            content: 'required',
         });
         if(validation.passes()){
             //Construct Object
