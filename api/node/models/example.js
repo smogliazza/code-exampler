@@ -3,9 +3,9 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var @uppercaseSchema = Schema({ //define collection structure
+var ExampleSchema = Schema({ //define collection structure
     created_at: { type: Date, default: Date.now()},
     updated_at: Date,
 });
 
-module.exports = mongoose.model('@uppercase', @uppercaseSchema);
+module.exports = mongoose.model('Example', ExampleSchema);
