@@ -1,0 +1,12 @@
+{
+    "js":
+    {
+        "node":
+        {
+            "mongoose":
+            {
+                "model": "@name"
+            }
+        }
+    }
+}
