@@ -6,9 +6,28 @@ let Validator = require('validatorjs');
 var controller = {
     //basic get [GET]
     get: (req, res) => {
-        return res.status(200).send({
-            examples: Example.find({})
+        Example.find({}).exec((err, examples) => {
+            if(err){
+                return res.status(404).send({
+                    status: 'error',
+                    type: 'save',
+                    data: 'Error not found message',
+                }); 
+            }else if(!examples){
+                return res.status(500).send({
+                    status: 'error',
+                    type: 'save',
+                    data: 'Server error message',
+                }); 
+            }else{
+                return res.status(200).send({
+                    status: 'success',
+                    type: 'example',
+                    examples: examples,
+                });
+            }
         });
+        
     },
 
     /* Save new example [POST]
@@ -28,10 +47,10 @@ var controller = {
             var example = new Example(params);
             example.save((err, exampleStored) =>  {
                 if(err || !exampleStored){
-                    return res.status(404).send({
+                    return res.status(500).send({
                         status: 'error',
                         type: 'save',
-                        data: 'Fail message',
+                        data: 'Error message',
                     });
                 }
                 return res.status(200).send({
@@ -68,10 +87,10 @@ var controller = {
             params.updated_at = Date.now();
             Example.replaceOne({_id}, params, (err, exampleStored) =>  {
                 if(err || !exampleStored){
-                    return res.status(404).send({
+                    return res.status(500).send({
                         status: 'error',
                         type: 'save',
-                        data: 'Fail message',
+                        data: 'Error message',
                     });
                 }
                 params._id = _id;
